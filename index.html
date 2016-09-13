@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="StarterApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Angular Material Basic App</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/app.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        <meta name="viewport" content="initial-scale=1" />
+    </head>
+    <body  ng-controller="CoversController as CoversCtrl">
+
+    <md-toolbar layout="row">
+        <h3>HBO</h3>
+    </md-toolbar>
+
+
+
+    <div class="container" >
+        <div class="scroller">
+            <div class="card" ng-repeat="cover_item in CoversCtrl.covers" ng-class="(cover_item.active) ? 'active' : ''" ng-click="CoversCtrl.activeClass()" id="film_{{$index}}">
+                <img ng-src="assets/img/{{ cover_item.avatar }}.jpg" alt="" width="100%">
+
+            </div>
+        </div>
+        <span ng-click="CoversCtrl.moverIzquierda($event)">IZQ</span> | <span ng-click="CoversCtrl.moverDerecha($event)">DER</span>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <!--
+    <style>
+        .main{
+            width: 100%;
+            position: relative;
+            background: red;
+        }
+
+        .second{
+            overflow: hidden;
+            position: relative;
+            background: yellow;
+        }
+
+        ul{
+            position: relative;
+            list-style: none;
+            background: orange;
+            padding: 0;
+            transition: all 1s ease;
+        }
+        ul>li{
+            float: left;
+            width: calc(100% / 5);
+            background: orange;
+
+        }
+    </style>
+
+    <div class="main">
+        <div class="second">
+            <ul class="card_ul">
+                <li class="card2">
+                    <img src="assets/img/true_detective.jpg" width="100%">
+                </li>
+                <li class="card2">
+                    <img src="assets/img/billions.jpg"width="100%">
+                </li>
+                <li class="card2 active">
+                    <img src="assets/img/girls.jpg" width="100%">
+                </li>
+                <li class="card2">
+                    <img src="assets/img/girls.jpg" width="100%">
+                </li>
+                <li class="card2">
+                    <img src="assets/img/girls.jpg" width="100%">
+                </li>
+                <li class="card2">
+                    <img src="assets/img/girls2.jpg" width="100%">
+                </li>
+            </ul>
+        </div>
+        <span ng-click="moverIzquierda()">IZQ</span> | <span ng-click="moverDerecha()">DER</span>
+    </div>
+
+-->
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+    <script>
+        $(document).ready(function () {
+            $('.card').click(function () {
+                $(this).toggleClass("active");
+            });
+
+            $('.izq').mouseenter(function (ev) {
+
+                $('.card_ul').css("left","-="+$('.card2').width());
+                event.stopPropagation();
+            });
+
+
+
+            $('.card2').bind({
+                mouseenter: function(event){
+                    $('.active').removeClass('active');
+                    $(this).addClass('active');
+                    event.preventDefault();
+                },
+                mouseleave: function(event){
+                    $(this).removeClass('active');
+                    event.preventDefault();
+                }
+            });
+
+
+
+
+            $('.der').mouseenter(function (ev) {
+
+                $('.card_ul').css("left","+="+$('.card2').width());
+                ev.preventDefault();
+            });
+
+
+
+        });
+    </script>
+        <!-- Angular Material Dependencies -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/CoversController.js"></script>
+        <script src="assets/js/CoverService.js"></script>
+        <script src="assets/js/UserController.js"></script>
+        <script src="assets/js/UserService.js"></script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<md-bottom-sheet class="md-grid md-has-header" >
+
+    <md-subheader>
+        Contact <span class="name">{{ vm.user.name }}</span>:
+            <md-icon class="close" ng-click="vm.closeBottomSheet()" md-svg-icon="close" ng-click="ul.shareContact(ul.selected)" ></md-icon>
+    </md-subheader>
+
+    <md-list>
+        <md-item ng-repeat="item in vm.items">
+            <md-button ng-click="vm.performAction(item)" >
+                <md-icon md-svg-icon="{{ item.icon_url }}" ></md-icon>
+                {{item.name}}
+            </md-button>
+        </md-item>
+    </md-list>
+
+</md-bottom-sheet>
