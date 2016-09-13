@@ -142,16 +142,16 @@ app.controller('CoversController',['coverService',function(coverService) {
     this.moverDerecha = function ($event) {
         //console.log(this.covers[0].offset);
         // actualizamos desplazamiento ++
-        console.log(this.covers[this.covers.length-1].offset);
+        //console.log(this.covers[this.covers.length-1].offset);
         if(this.covers[this.covers.length-1].offset !== 2){
             for (var i = 0, l = this.covers.length; i < l; i++) {
                 this.covers[i].offset-- ;
-                TweenLite.to('#film_'+i, 0.5, {x: '-=100%'});
+                TweenLite.to('#film_'+i, 1.2, {x: '-=100%', ease:Power4.easeInOut});
                 if(this.covers[i].offset === 0){
-                    TweenLite.to('#film_'+i, 0, {className:'+=active', scale:0.95});
+                    TweenLite.to('#film_'+i, 0.5, {className:'+=active', scale:0.95});
 
-                    TweenLite.to('#film_'+(i+1), 0, {className:'-=active', scale:0.85});
-                    TweenLite.to('#film_'+(i-1), 0, {className:'-=active', scale:0.85});
+                    TweenLite.to('#film_'+(i+1), 0.5, {className:'-=active', scale:0.85});
+                    TweenLite.to('#film_'+(i-1), 0.5, {className:'-=active', scale:0.85});
                 }
             }
         }
@@ -186,15 +186,15 @@ app.controller('CoversController',['coverService',function(coverService) {
 
 
 
-        console.log(this.covers[0].offset);
+        //console.log(this.covers[0].offset);
         if(this.covers[0].offset !== -2){
             for (var i = 0, l = this.covers.length; i < l; i++) {
                 this.covers[i].offset++ ;
-                TweenLite.to('#film_'+i, 0.5, {x: '+=100%'});
+                TweenLite.to('#film_'+i, 1.2, {x: '+=100%', ease:Power4.easeInOut});
                 if(this.covers[i].offset === 0){
-                    TweenLite.to('#film_'+i, 0, {className:'+=active', scale:0.95});
-                    TweenLite.to('#film_'+(i+1), 0, {className:'-=active', scale:0.85});
-                    TweenLite.to('#film_'+(i-1), 0, {className:'-=active', scale:0.85});
+                    TweenLite.to('#film_'+i, 0.5, {className:'+=active', scale:0.95});
+                    TweenLite.to('#film_'+(i+1), 0.5, {className:'-=active', scale:0.85});
+                    TweenLite.to('#film_'+(i-1), 0.5, {className:'-=active', scale:0.85});
                 }
             }
         }
