@@ -19,15 +19,61 @@
 
     <div class="container" >
         <div class="scroller">
-            <div class="card" ng-repeat="cover_item in CoversCtrl.covers" ng-class="(cover_item.active) ? 'active' : ''" ng-click="CoversCtrl.activeClass()" id="film_{{$index}}">
+            <div class="card" ng-repeat="cover_item in CoversCtrl.covers" ng-class="(cover_item.active) ? 'active' : ''" ng-click="CoversCtrl.move($event,$index)" id="film_{{$index}}">
                 <img ng-src="assets/img/{{ cover_item.avatar }}.jpg" alt="" width="100%">
 
             </div>
         </div>
-        <span ng-click="CoversCtrl.moverIzquierda($event)">IZQ</span> | <span ng-click="CoversCtrl.moverDerecha($event)">DER</span>
+        <span ng-click="CoversCtrl.moverIzquierda($event,1)">IZQ</span> | <span ng-click="CoversCtrl.moverDerecha($event,1)">DER</span>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <ul>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(1)">a</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(2)">b</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(3)">c</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(4)">d</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(5)">e</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(6)">f</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(7)">g</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(8)">h</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(9)">i</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(10)">j</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(11)">k</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(12)">l</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(13)">m</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(14)">m</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(15)">ñ</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(16)">o</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(17)">p</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(18)">q</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(19)">r</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(20)">s</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(21)">t</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(22)">u</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(23)">v</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(24)">w</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(25)">x</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(26)">y</li>
+        <li style="display: inline-block" ng-click="CoversCtrl.changeCurrent(27)">z</li>
+    </ul>
+<!--
+    <style>
+        #red-slider .md-thumb:after, #red-slider .md-track-fill{
+            background-color: greenyellow !important;
+            border-color: greenyellow !important;
+        }
+        #red-slider .md-focus-thumb, #red-slider .md-focus-ring{
+            background-color: greenyellow;
+        }
+    </style>
+
+    <div layout="">
+        <div flex="10" layout="" layout-align="center center">
+            <span class="md-body-1">R</span>
+        </div>
+        <md-slider flex="" min="0" max="13" ng-model="CoversCtrl.current" aria-label="red" id="red-slider" ng-change="ConversCtrl.showCurrent()">
+        </md-slider>
+    </div>-->
 
     <!--
     <style>
