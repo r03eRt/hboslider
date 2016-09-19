@@ -119,18 +119,39 @@ app.controller('CoversController',['coverService',function(coverService) {
             offset: 11
         },
         {
-            name: '',
-            avatar: '',
-            content: '',
+            name: 'Ktrue detective2',
+            avatar: 'true_detective2',
+            content: 'walkingdead2',
             active: false,
             offset: 12
+        },
+        {
+            name: 'blacksails2',
+            avatar: 'blacksails2',
+            content: 'blacksails2',
+            active: false,
+            offset: 13
+        },
+        {
+            name: 'blacksails2',
+            avatar: 'blacksails2',
+            content: 'blacksails2',
+            active: false,
+            offset: 14
         },
         {
             name: '',
             avatar: '',
             content: '',
             active: false,
-            offset: 13
+            offset: 15
+        },
+        {
+            name: '',
+            avatar: '',
+            content: '',
+            active: false,
+            offset: 16
         },
 
 
@@ -152,27 +173,55 @@ app.controller('CoversController',['coverService',function(coverService) {
         console.log(this.current, this.covers);
         var current_index = 0;
         console.log(new_index);
-        for (var i = 0, l = this.covers.length; i < l; i++) {
-            this.covers[i].offset = this.covers[i].offset-new_index ;
-            TweenLite.to('#film_'+i, 1.2, {x: '-='+new_index*100+'%', ease:Power4.easeInOut});
-            TweenLite.to('.card', 0.5, {className:'-=active', scale:0.85});
+        console.log('Actual '+this.current);
+        console.log('Quiero ir '+new_index);
+        var diff = (this.current - new_index);
+        console.log('Diff '+diff);
 
-            if(this.covers[i].offset === 0){
-              current_index = i;
+        var abs = Math.abs(diff);
+
+        if(diff < 0){
+            console.log('voy derecha');
+            console.log('diff->', Math.abs(diff)-2);
+            for (var i = 0, l = this.covers.length; i < l; i++) {
+                this.covers[i].offset = this.covers[i].offset-abs ;
+                TweenLite.to('#film_'+i, 1, {x: '-='+ Math.abs(diff)*100+'%', ease:Power4.easeInOut});
+                TweenLite.to('.card', 0.5, {className:'-=active', scale:0.85});
+                if(this.covers[i].offset === 0){
+                  current_index = i;
+                }
             }
-        }
-        TweenLite.to('#film_'+current_index, 1.8, {className:'+=active', scale:0.95});
-        this.current = current_index;
-    };
-    
-    this.move = function ($event,$index_click) {
-        //console.log('puntero --> '+this.current);
+            TweenLite.to('#film_'+new_index, 1.8, {className:'+=active', scale:0.95});
+            this.current = new_index;
 
-        //console.log('click '+$index_click);
-        //console.log(this.covers[$index_click]);
+
+        }else if( diff === 0){
+            console.log('Nada');
+        }else{
+          console.log('voy derecha');
+          console.log('diff->', Math.abs(diff)-2);
+          for (var i = 0, l = this.covers.length; i < l; i++) {
+              this.covers[i].offset = this.covers[i].offset+abs ;
+              TweenLite.to('#film_'+i, 1, {x: '+='+ Math.abs(diff)*100+'%', ease:Power4.easeInOut});
+              TweenLite.to('.card', 0.5, {className:'-=active', scale:0.85});
+              if(this.covers[i].offset === 0){
+                current_index = i;
+              }
+          }
+          TweenLite.to('#film_'+new_index, 1.8, {className:'+=active', scale:0.95});
+          this.current = new_index;
+        }
+
+    };
+
+
+
+
+
+
+    this.move = function ($event,$index_click) {
 
         var movement = this.covers[this.current].offset + this.covers[$index_click].offset;
-
 
         if(movement === 1){
             this.moverDerecha($event,1);
@@ -186,13 +235,10 @@ app.controller('CoversController',['coverService',function(coverService) {
             console.log("No hago nada");
         }
 
-
-
-
-
+        console.log(this.covers);
     };
 
-    
+
 
     this.moverDerecha = function ($event, times) {
 
